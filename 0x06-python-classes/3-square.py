@@ -2,7 +2,7 @@
 """Documentation for a square class"""
 
 
-class square:
+class Square:
     """Square class for a quadrilateral with four equal sides"""
 
     def __init__(self, size=0):
@@ -23,7 +23,5 @@ class square:
             self.__size = size
 
     def area(self):
-
         """Returns the area of the square"""
-
         return self.__size ** 2
