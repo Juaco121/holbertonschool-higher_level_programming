@@ -2,7 +2,7 @@
 """Documentation for a square class"""
 
 
-class square:
+class Square():
     """Square class for a quadrilateral with four equal sides"""
 
     def __init__(self, size=0):
