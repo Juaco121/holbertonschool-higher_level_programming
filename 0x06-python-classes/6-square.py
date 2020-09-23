@@ -4,7 +4,7 @@
 
 class Square():
     """Square class for quadrilateral with four equal sides"""
-       
+
     def __init__(self, size=0, position=(0, 0)):
         """Sets the initial size and position of an instantiated object
            Throws an error when size is not integer or when position is not
