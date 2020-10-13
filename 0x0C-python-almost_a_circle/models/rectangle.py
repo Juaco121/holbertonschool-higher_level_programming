@@ -19,11 +19,11 @@ class Rectangle(Base):
             id (int): the id of the rectangle
         """
 
-        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     @property
     def width(self):
