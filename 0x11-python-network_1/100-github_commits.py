@@ -1,22 +1,18 @@
 #!/usr/bin/python3
-"""
-Displays 10 commits of the repository "rails" by the user "rail"
-"""
-
+'''List 10 commits starting with most recent of repo
+rails by user rails
+'''
 import requests
-from sys import argv
+import sys
+
 
 if __name__ == '__main__':
-    repo = argv[1]
-    owner = argv[1]
-
-    url = 'https://api.github.com/repos/{}/{}/commits'.format(owner, repo)
-
-    r = requests.get(url)
-    commits = r.json()
-
-    for i in range(10):
-        commit = commits[i]
-        name = ((commit['commit'])['author'])['name']
-        sha = commit['sha']
-        print("{}: {}".format(sha, name))
+    owner = sys.argv[2]
+    repository = sys.argv[1]
+    url = 'https://api.github.com/repos/{}/{}/commits'.format(owner,
+                                                              repository)
+    request = requests.get(url)
+    json_response = request.json()
+    for i in json_response[:10]:
+        print('{}: {}'.format(i.get('sha'),
+                              i.get('commit').get('author').get('name')))
