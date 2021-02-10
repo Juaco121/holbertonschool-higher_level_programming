@@ -3,13 +3,12 @@
 // matches the given integer
 
 const request = require('request');
-const argv = process.argv;
-let url = 'http://swapi.co/api/films/';
+const urlApi = 'https://swapi.co/api/films/' + process.argv[2];
 
-request(url + argv[2], function (err, res, body) {
-  if (err) {
-    console.log(err);
+request(urlApi, function (error, response, body) {
+  if (error) {
+    console.log(error); // Print the error if one occurred
+  } else {
+    console.log(JSON.parse(body).title);
   }
-  let json = JSON.parse(body);
-  console.log(json.title);
 });
