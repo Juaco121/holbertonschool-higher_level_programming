@@ -2,12 +2,9 @@
 // Writes a string to a file
 
 const fs = require('fs');
-const argv = process.argv;
-let filePath = argv[2];
-let string = argv[3];
 
-fs.writeFile(filePath, string, 'utf8', function (err) {
+fs.writeFile(process.argv[2], process.argv[3], 'utf-8', (err) => {
   if (err) {
-    console.log(err);
+    return console.log(err);
   }
 });
