@@ -3,22 +3,25 @@
 // jsonplaceholder.typicode.com API
 
 const request = require('request');
-const url = process.argv[2];
+const urlApi = process.argv[2];
 
-request(url, function (err, res, body) {
-  if (err) {
-    console.log(err);
-  }
-  let tasks = JSON.parse(body);
-  let obj = {};
-  for (let task of tasks) {
-    if (task.completed === true) {
-      if (obj[task.userId] === undefined) {
-        obj[task.userId] = 1;
-      } else {
-        obj[task.userId]++;
+request(urlApi, function (error, response, body) {
+  if (error) {
+    console.log(error); // Print the error if one occurred
+  } else {
+    const jsonObj = JSON.parse(body);
+    const newDict = {};
+    let key = '';
+
+    for (let i = 0; i < jsonObj.length; i++) {
+      key = jsonObj[i].userId.toString();
+      if (!newDict[key] && jsonObj[i].completed) {
+        newDict[key] = 1;
+      } else if (jsonObj[i].completed) {
+        newDict[key]++;
       }
     }
+
+    console.log(newDict);
   }
-  console.log(obj);
 });
